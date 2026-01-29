@@ -1,0 +1,23 @@
+@startuml ActivityDiagram
+start
+:User opens app;
+:Enter credentials;
+
+if (Valid credentials?) then (yes)
+  :Load dashboard;
+  :Display user data;
+  
+  if (User action?) then (logout)
+    :Clear session;
+    :Return to login;
+  else (continue)
+    :Process user request;
+    :Update database;
+  endif
+else (no)
+  :Show error message;
+  :Return to login;
+endif
+
+stop
+@enduml
