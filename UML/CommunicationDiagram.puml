@@ -1,0 +1,13 @@
+@startuml CommunicationDiagram
+object User
+object Controller
+object Service
+object Database
+
+User -> Controller : 1: request data
+Controller -> Service : 2: process request
+Service -> Database : 3: query data
+Database -> Service : 4: return results
+Service -> Controller : 5: formatted data
+Controller -> User : 6: display response
+@enduml
