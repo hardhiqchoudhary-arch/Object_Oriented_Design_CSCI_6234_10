@@ -1,0 +1,21 @@
+@startuml UseCaseDiagram
+left to right direction
+skinparam packageStyle rectangle
+
+actor Customer
+actor Administrator
+
+rectangle "Online Shopping System" {
+  Customer --> (Browse Products)
+  Customer --> (Add to Cart)
+  Customer --> (Checkout)
+  Customer --> (Track Order)
+  
+  Administrator --> (Manage Products)
+  Administrator --> (View Orders)
+  Administrator --> (Manage Users)
+  
+  (Checkout) ..> (Process Payment) : <<include>>
+  (Checkout) ..> (Update Inventory) : <<include>>
+}
+@enduml
