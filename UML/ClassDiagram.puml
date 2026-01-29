@@ -1,0 +1,41 @@
+@startuml ClassDiagram
+class Student {
+  -studentID: String
+  -name: String
+  -email: String
+  -enrollmentDate: Date
+  +enroll(course: Course): void
+  +getGrades(): List<Grade>
+  +updateProfile(): void
+}
+
+class Course {
+  -courseID: String
+  -courseName: String
+  -credits: int
+  -instructor: Professor
+  +addStudent(student: Student): void
+  +removeStudent(student: Student): void
+  +getEnrollment(): int
+}
+
+class Professor {
+  -professorID: String
+  -name: String
+  -department: String
+  +teachCourse(course: Course): void
+  +gradeStudent(student: Student, grade: float): void
+}
+
+class Grade {
+  -gradeID: String
+  -score: float
+  -date: Date
+  +calculate(): float
+}
+
+Student "many" -- "many" Course : enrolls in >
+Course "many" -- "1" Professor : taught by >
+Student "1" -- "many" Grade : receives >
+Course "1" -- "many" Grade : has >
+@enduml
