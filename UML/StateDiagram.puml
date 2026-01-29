@@ -1,0 +1,18 @@
+@startuml StateDiagram
+[*] --> Idle
+
+Idle --> Processing : start order
+Processing --> Validated : validate payment
+
+Validated --> Shipped : approve order
+Validated --> Cancelled : payment failed
+
+Shipped --> Delivered : confirm delivery
+Shipped --> Returned : return requested
+
+Delivered --> [*]
+Cancelled --> [*]
+Returned --> Refunded
+Refunded --> [*]
+
+@enduml
