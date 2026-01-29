@@ -1,0 +1,36 @@
+@startuml ComponentDiagram
+package "Frontend Layer" {
+  [Web Interface]
+  [Mobile App]
+}
+
+package "Application Layer" {
+  [API Gateway]
+  [Authentication Service]
+  [Business Logic]
+}
+
+package "Data Layer" {
+  [Database]
+  [Cache]
+  [File Storage]
+}
+
+package "External Services" {
+  [Payment Gateway]
+  [Email Service]
+}
+
+[Web Interface] --> [API Gateway]
+[Mobile App] --> [API Gateway]
+
+[API Gateway] --> [Authentication Service]
+[API Gateway] --> [Business Logic]
+
+[Business Logic] --> [Database]
+[Business Logic] --> [Cache]
+[Business Logic] --> [File Storage]
+
+[Business Logic] --> [Payment Gateway]
+[Business Logic] --> [Email Service]
+@enduml
